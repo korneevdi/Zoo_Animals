@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit animal &laquo; [[${animal.species}]]&raquo; &ndash; Zoo</title>
+</head>
+<body>
+<a data-th-href = "@{/catalogue/animals/{animalId}(animalId = ${animal.id})}">&larr; To the animal</a>
+<h1>Edit animal &laquo; [[${animal.species}]]&raquo;</h1>
+<form method = "post" data-th-action = "@{catalogue/animals/{animalId}/edit(animalId = ${animal.id})}">
+    <label>
+        Species:<br>
+        <input type = "text" name = "species" data-th-value = "${animal.species}">
+    </label><br>
+    <label>
+        Color:<br>
+        <input type = "text" name = "color" data-th-value = "${animal.color}">
+    </label><br>
+    <label>
+        Habitat:<br>
+        <input type = "text" name = "habitat" data-th-value = "${animal.habitat}">
+    </label><br>
+    <label>
+        Name:<br>
+        <input type = "text" name = "name" data-th-value = "${animal.name}">
+    </label><br>
+    <label>
+        Age:<br>
+        <input type = "number" name = "age" data-th-value = "${animal.age}">
+    </label><br>
+    <label>
+        Weight:<br>
+        <input type = "number" name = "weight" data-th-value = "${animal.weight}">
+    </label><br>
+    <button type="submit">Edit</button>
+</form>
+</body>
+</html>
