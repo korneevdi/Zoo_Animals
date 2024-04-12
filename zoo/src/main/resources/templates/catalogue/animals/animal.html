@@ -12,8 +12,13 @@
     <li><strong>Species</strong>: <span data-th-text = "${animal.species}"></span></li>
     <li><strong>Color</strong>: <span data-th-text = "${animal.color}"></span></li>
     <li><strong>Name</strong>: <span data-th-text = "${animal.name}"></span></li>
+    <li><strong>Habitat</strong>: <span data-th-text = "${animal.habitat}"></span></li>
     <li><strong>Age</strong>: <span data-th-text = "${animal.age}"></span></li>
     <li><strong>Weight</strong>: <span data-th-text = "${animal.weight}"></span></li>
 </ul>
+<a data-th-href = "@{/catalogue/animals/{animalId}/edit(animalId = ${animal.id})}">Edit</a>
+<form method = "post" data-th-action = "@{/catalogue/animals/{animalId}/delete(animalId = ${animal.id})}">
+    <button type = "submit">Delete</button>
+</form>
 </body>
 </html>

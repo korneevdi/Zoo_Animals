@@ -45,4 +45,9 @@ public class DefaultAnimalService implements AnimalService{
                     throw new NoSuchElementException();
                 });
     }
+
+    @Override
+    public void deleteAnimal(Integer id) {
+        this.animalRepository.deleteById(id);
+    }
 }

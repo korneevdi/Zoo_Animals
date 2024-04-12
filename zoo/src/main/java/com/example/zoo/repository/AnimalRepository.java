@@ -12,4 +12,6 @@ public interface AnimalRepository {
     Animal save(Animal animal);
 
     Optional<Animal> findById(Integer animalId);
+
+    void deleteById(Integer id);
 }

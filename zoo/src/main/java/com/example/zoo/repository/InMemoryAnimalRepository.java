@@ -12,11 +12,11 @@ public class InMemoryAnimalRepository implements AnimalRepository{
     // Repository for animal information
     private final List<Animal> animals = Collections.synchronizedList(new ArrayList<>());
 
-    public InMemoryAnimalRepository() {
+    /*public InMemoryAnimalRepository() {
         // Add a couple of animals by hand to output them at the web page
         this.animals.add(new Animal(1, "Lion", "orange", "Tanzania", "King", 8, 121.2));
         this.animals.add(new Animal(2, "Wolf", "grey", "Canada", "Big-Paw", 11, 81.4));
-    }
+    }*/
 
     @Override
     public List<Animal> findAll() {
@@ -39,5 +39,10 @@ public class InMemoryAnimalRepository implements AnimalRepository{
         return this.animals.stream()
                 .filter(animal -> Objects.equals(animalId, animal.getId()))
                 .findFirst();
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        this.animals.removeIf(animal -> Objects.equals(id, animal.getId()));
     }
 }
