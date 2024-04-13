@@ -43,7 +43,8 @@ public class AnimalController {
     }
 
     @PostMapping("edit")
-    public String updateAnimal(@ModelAttribute(name = "animal", binding = false) Animal animal, @Valid UpdateAnimalPayload payload,
+    public String updateAnimal(@ModelAttribute(name = "animal", binding = false) Animal animal,
+                               @Valid UpdateAnimalPayload payload,
                                BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("payload", payload);
