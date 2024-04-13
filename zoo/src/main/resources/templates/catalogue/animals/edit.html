@@ -2,15 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit animal &laquo; [[${animal.species}]]&raquo; &ndash; Zoo</title>
+    <title>Edit [[${animal.species}]] &ndash; Zoo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 20%;
+            margin-top: 10px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+    </style>
 </head>
 <body>
 <a data-th-href = "@{/catalogue/animals/{animalId}(animalId = ${animal.id})}">&larr; To the animal</a>
-<h1>Edit animal &laquo; [[${animal.species}]]&raquo;</h1>
+<h1>Edit [[${animal.species}]]</h1>
 <div data-th-if = "${errors}">
-    <h2>Errors occurred</h2>
+    <h2 class="error">Errors occurred</h2>
     <ul>
-        <li data-th-each = "error: ${errors}" data-th-text = "${error}"></li>
+        <li data-th-each = "error: ${errors}" class="error" data-th-text = "${error}"></li>
     </ul>
 </div>
 <form method = "post" data-th-action = "@{/catalogue/animals/{animalId}/edit(animalId = ${animal.id})}">

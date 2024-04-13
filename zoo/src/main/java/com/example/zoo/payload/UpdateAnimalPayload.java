@@ -1,5 +1,6 @@
 package com.example.zoo.payload;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,6 +21,6 @@ public record UpdateAnimalPayload(
         @Min(value = 0, message = "{catalogue.animals.update.errors.age_value_is_invalid}")
         int age,
         @NotNull(message = "{catalogue.animals.update.errors.weight_is_null}")
-        @Min(value = 0, message = "{catalogue.animals.update.errors.weight_value_is_invalid}")
+        @DecimalMin(value = "0.01", message = "{catalogue.animals.update.errors.weight_value_is_invalid}")
         double weight) {
 }

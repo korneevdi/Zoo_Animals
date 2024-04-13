@@ -2,42 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>New animal &ndash; Zoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new animal &ndash; Zoo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 20%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        ul li {
+            color: #dc3545;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
-<a data-th-href = "@{/catalogue/animals/list}">&larr; To the list of animals</a>
-<h1>New animal</h1>
-<div data-th-if = "${errors}">
+<a data-th-href="@{/catalogue/animals/list}" style="text-decoration: none;">&larr; To the list of animals</a>
+<h1>Add new animal</h1>
+<div data-th-if="${errors}">
     <h2>Errors occurred</h2>
     <ul>
-        <li data-th-each = "error: ${errors}" data-th-text = "${error}"></li>
+        <li data-th-each="error: ${errors}" data-th-text="${error}"></li>
     </ul>
 </div>
-<form method = "post" data-th-action = "@{/catalogue/animals/create}">
+<form method="post" data-th-action="@{/catalogue/animals/create}">
     <label>
         Species:<br>
-        <input type = "text" name = "species" data-th-value="${payload?.species}">
-    </label><br>
+        <input type="text" name="species" data-th-value="${payload?.species}">
+    </label>
     <label>
         Color:<br>
-        <input type = "text" name = "color" data-th-value="${payload?.color}">
-    </label><br>
+        <input type="text" name="color" data-th-value="${payload?.color}">
+    </label>
     <label>
         Habitat:<br>
-        <input type = "text" name = "habitat" data-th-value="${payload?.habitat}">
-    </label><br>
+        <input type="text" name="habitat" data-th-value="${payload?.habitat}">
+    </label>
     <label>
         Name:<br>
-        <input type = "text" name = "name" data-th-value="${payload?.name}">
-    </label><br>
+        <input type="text" name="name" data-th-value="${payload?.name}">
+    </label>
     <label>
         Age:<br>
-        <input type = "number" name = "age" data-th-value="${payload?.age}">
-    </label><br>
+        <input type="number" name="age" data-th-value="${payload?.age}">
+    </label>
     <label>
         Weight:<br>
-        <input type = "number" name = "weight" data-th-value="${payload?.weight}">
-    </label><br>
+        <input type="number" name="weight" data-th-value="${payload?.weight}">
+    </label>
     <button type="submit">Add</button>
 </form>
 </body>
