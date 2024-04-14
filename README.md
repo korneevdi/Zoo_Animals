@@ -1,6 +1,6 @@
 ## Description
 
-This web application is designed to manage information about animals in a zoo. The user can add new animals to the table, change information about them, and also remove them from the table if the animal has left the zoo.
+This web application is designed to manage information about animals in a zoo. The user can add new animals to the table, change information about them, and also remove them from the table if the animal has left the zoo. The application contains also a method for filtering the list of animals by their species. Filtering by other fields can be added in the same way.
 The Animal class has six fields: species, color, habitat, name, age, and weight. The *color* field has no restrictions and can be left blank, while the other fields have restrictions. If the user tries to enter an incorrect value, a special error message is displayed.
 
 ## Structure
