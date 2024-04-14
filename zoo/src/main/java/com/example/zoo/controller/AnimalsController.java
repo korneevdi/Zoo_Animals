@@ -20,15 +20,9 @@ public class AnimalsController {
 
     private final AnimalService animalService;
 
-    /*@GetMapping("list") // RequestMapping with the GET method
-    public String getAnimalList(Model model) {
-        model.addAttribute("animals", this.animalService.findAllAnimals());
-        return "catalogue/animals/list";
-    }*/
-
     @GetMapping("list")
     public String getFilteredAnimalList(@RequestParam(required = false) String species, Model model) {
-        List<Animal> animals;
+        List<Animal> animals
         if (species != null && !species.isEmpty()) {
             animals = animalService.findAnimalsBySpecies(species);
         } else {
