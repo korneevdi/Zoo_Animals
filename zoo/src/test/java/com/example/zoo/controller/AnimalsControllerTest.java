@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.ui.ConcurrentModel;
 import org.springframework.validation.BindingResult;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,26 +23,24 @@ class AnimalsControllerTest {
 
     AnimalsController controller = new AnimalsController(this.animalService);
 
-
     @Test
-    @DisplayName("getAnimalList returns the list of animals")
-    void getAnimalList_ReturnsAnimalsListPage() {
+    @DisplayName("getFilteredAnimalList returns the list of animals filtered by species")
+    void getFilteredAnimalList_ReturnsFilteredAnimalsListPage() {
         // given
         var model = new ConcurrentModel();
-
-        var animals = IntStream.range(1, 4)
-                .mapToObj(i -> new Animal(i, "Species #%d".formatted(i), "Color #%d".formatted(i),
-                        "Habitat #%d".formatted(i), "Name #%d".formatted(i), i*5, i*20))
-                .toList();
-
-        doReturn(animals).when(this.animalService).findAllAnimals();
+        var species = "fox";
+        var filteredAnimals = List.of(
+                new Animal(1, "Fox", "Red", "Forest", "Foxy", 3, 15.0),
+                new Animal(2, "Fox", "Brown", "Meadow", "Rusty", 4, 17.5)
+        );
+        doReturn(filteredAnimals).when(animalService).findAnimalsBySpecies(species);
 
         // when
-        var result = this.controller.getAnimalList(model);
+        var result = controller.getFilteredAnimalList(species, model);
 
         // then
         assertEquals("catalogue/animals/list", result);
-        assertEquals(animals, model.getAttribute("animals"));
+        assertEquals(filteredAnimals, model.getAttribute("animals"));
     }
 
     @Test

@@ -50,4 +50,9 @@ public class DefaultAnimalService implements AnimalService{
     public void deleteAnimal(Integer id) {
         this.animalRepository.deleteById(id);
     }
+
+    @Override
+    public List<Animal> findAnimalsBySpecies(String species) {
+        return this.animalRepository.findBySpecies(species);
+    }
 }

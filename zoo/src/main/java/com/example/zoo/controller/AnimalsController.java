@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("catalogue/animals")
@@ -18,9 +20,21 @@ public class AnimalsController {
 
     private final AnimalService animalService;
 
-    @GetMapping("list") // RequestMapping with the GET method
+    /*@GetMapping("list") // RequestMapping with the GET method
     public String getAnimalList(Model model) {
         model.addAttribute("animals", this.animalService.findAllAnimals());
+        return "catalogue/animals/list";
+    }*/
+
+    @GetMapping("list")
+    public String getFilteredAnimalList(@RequestParam(required = false) String species, Model model) {
+        List<Animal> animals;
+        if (species != null && !species.isEmpty()) {
+            animals = animalService.findAnimalsBySpecies(species);
+        } else {
+            animals = animalService.findAllAnimals();
+        }
+        model.addAttribute("animals", animals);
         return "catalogue/animals/list";
     }
 

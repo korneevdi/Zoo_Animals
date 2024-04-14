@@ -14,4 +14,6 @@ public interface AnimalRepository {
     Optional<Animal> findById(Integer animalId);
 
     void deleteById(Integer id);
+
+    List<Animal> findBySpecies(String species);
 }

@@ -19,6 +19,43 @@
             margin-bottom: 20px;
         }
 
+        .filter-form {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .filter-form label {
+            margin-right: 10px;
+        }
+
+        .filter-form input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-form button[type="submit"] {
+            margin-left: 20px;
+            width: 80px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
         table {
             width: 30%;
             margin: 0 auto;
@@ -64,6 +101,11 @@
 </head>
 <body>
 <h1>List of animals</h1>
+<form class="filter-form" action="/catalogue/animals/list" method="get">
+    <label for="species">Filter by species:</label>
+    <input type="text" id="species" name="species" placeholder="Enter species...">
+    <button type="submit" class="button">Filter</button>
+</form>
 <table>
     <thead>
     <tr>

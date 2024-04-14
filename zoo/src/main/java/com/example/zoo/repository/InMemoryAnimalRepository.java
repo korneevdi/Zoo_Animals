@@ -4,6 +4,7 @@ import com.example.zoo.entity.Animal;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Repository
@@ -44,5 +45,12 @@ public class InMemoryAnimalRepository implements AnimalRepository{
     @Override
     public void deleteById(Integer id) {
         this.animals.removeIf(animal -> Objects.equals(id, animal.getId()));
+    }
+
+    @Override
+    public List<Animal> findBySpecies(String species) {
+        return animals.stream()
+                .filter(animal -> animal.getSpecies().equalsIgnoreCase(species))
+                .collect(Collectors.toList());
     }
 }

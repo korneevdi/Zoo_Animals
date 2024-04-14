@@ -16,4 +16,6 @@ public interface AnimalService {
     void updateAnimal(Integer id, String species, String color, String habitat, String name, int age, double weight);
 
     void deleteAnimal(Integer id);
+
+    List<Animal> findAnimalsBySpecies(String species);
 }
